@@ -9,6 +9,12 @@
 
 function addition() {
 	// your code goes here!
+
+    var num1 = document.getElementById('additionInput1').value;
+    var num2 = document.getElementById('additionInput2').value;
+    var sum = +num1 + +num2;
+
+    alert(sum);
 }
 
 /* --------------------------------------------------------- */
@@ -29,6 +35,24 @@ function addition() {
 
 function vowelCounter() {
 	// your code goes here!
+
+
+    var myString = document.getElementById('vowelInput').value;
+    var mySplit = myString.split("");
+    var count = 0;
+    var i = 0;
+
+    for (i; i < mySplit.length; i++) {
+        if (mySplit[i] == "a" || mySplit[i] == "e" || mySplit[i] == "i" || mySplit[i] == "o" || mySplit[i] == "u") {
+            count++;
+        }
+    }
+
+    if (count == 1)
+        document.getElementById('vowelInput').value = "That sentence has 1 vowel in it.";
+    else
+        document.getElementById('vowelInput').value = "That sentence has " + count + " vowels in it.";
+
 }
 
 /* --------------------------------------------------------- */
@@ -58,12 +82,25 @@ function vowelCounter() {
 	For extra functionality, track the number of guesses the user has made, and print that as part of the result.
 */ 
 
+var wrong = 0;
+var answer = Math.floor((Math.random() * 100) + 1);
+
 function submit() {
-	
+	var guess = parseInt(document.getElementById('numberGuess').value);
+    wrong++;
+
+    if (guess > answer)
+        document.getElementById('numberResult').innerHTML = "You're too high.  Guesses = " + wrong;
+    else if (guess < answer)
+        document.getElementById('numberResult').innerHTML = "You're too low.  Guesses = " + wrong;
+    else
+        document.getElementById('numberResult').innerHTML = "Congratulations!  You have won!";
+
 }
 
 function reset() {
-
+    var answer = Math.floor((Math.random() * 100) + 1);
+    wrong = 0;
 }
 
 
